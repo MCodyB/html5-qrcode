@@ -1,3 +1,8 @@
+// Code originally copied from https://github.com/dwa012/html5-qrcode
+// Modified by myself and from an unmerged commit to fix the `successCallback`
+// from being called over and over.
+// All other modifications my own
+
 (function($) {
   jQuery.fn.extend({
     html5_qrcode: function(qrcodeSuccess, qrcodeError, videoError) {
@@ -66,14 +71,12 @@
             console.log('Native web camera streaming (getUserMedia) not supported in this browser.');
             // Display a friendly "sorry" message to the user
           }
-          console.log("ber");
           qrcode.callback = function (result) {
               qrcodeSuccess(result, localMediaStream);
           };
       }); // end of html5_qrcode
     },
     html5_qrcode_stop: function() {
-      console.log("i hope not");
       return this.each(function() {
         //stop the stream and cancel timeouts
         $(this).data('stream').getVideoTracks().forEach(function(videoTrack) {
