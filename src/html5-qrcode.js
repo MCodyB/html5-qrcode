@@ -36,7 +36,7 @@
                 };//end snapshot function
 
                 window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
-                navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+                navigator.getUserMedia = navigator.mediaDevices.getUserMedia || navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
 
                 var successCallback = function(stream) {
                     video.src = (window.URL && window.URL.createObjectURL(stream)) || stream;
